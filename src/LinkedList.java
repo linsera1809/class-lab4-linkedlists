@@ -11,6 +11,8 @@
  *
  */
 
+import sun.awt.image.ImageWatched;
+
 class LinkedList<E> {
 
     private Node<E> head;
@@ -18,11 +20,12 @@ class LinkedList<E> {
 
     /**
      * Implement the constructor
-     * Constructor which takes the starting value for the first node, called the "head".
+     * Constructor which takes the starting value for the first node,
+     * called the "head".
      * @param startingValue Value to initialize the linked list with.
      */
     public LinkedList(E startingValue) {
-        head = new Node<>(startingValue);
+        head = new Node<E>(startingValue);
     }
 
     /**
@@ -35,14 +38,18 @@ class LinkedList<E> {
 
      /**
      * Implement this method.
+     *
      * Add a value to the end of the linked list.
-     * This method should create a new node with the value
-     * and traverse the nodes in the linked list using the "next" property of the nodes starting with the head node.
-     * Once a null next link is encountered add a new node and link it to the current last node (Node.setNext()).
-     * @param value The value to be appended as a node at the end of the linked list.
+     * This method should create a new node with the value and
+     * traverse the nodes in the linked list using the "next"
+     * property of the nodes starting with the head node. Once a null
+     * next link is encountered add a new node and link it to the
+     * current last node (Node.setNext()).
+     *
+     *  @param value The value to be appended as a node at the end of the linked list.
      */
      public void addValue(E value) {
-         Node<E> currentNode = head; //cast to Integer
+         Node<E> currentNode = head;
          while (currentNode.getNext() != null) {
              currentNode = currentNode.getNext();
             }
@@ -66,13 +73,13 @@ class LinkedList<E> {
     }
 
     /**
-     * TODO Implement this method.
+     * Implement this method.
      * Determine if the LinkedList is empty or not.
      * @return true if this LinkedList has no items. (This is the same as the size equal to zero.)
      * false if the size is greater than zero.
      */
     public boolean isEmpty() {
-        return false;
+        return length() == 0;
     }
 
     /**
@@ -98,14 +105,17 @@ class LinkedList<E> {
     }
 
     /**
-     * TODO Implement this method.
+     * Implement this method.
      * Remove and return the first element (element number zero) from the list.
      * This operation is only valid for non-empty (size() > 0) lists.
      * @return The removed element.
      * @throws IndexOutOfBoundsException When the list is empty.
      */
     public E remove() {
-        return null;
+        if(head.getNext()!=null)
+            head = head.getNext();
+        else head = null;
+        return (E) head;
     }
 
     /**
@@ -120,5 +130,39 @@ class LinkedList<E> {
      */
     public E remove(int index) {
         return null;
+    }
+
+    /**
+     * @return Printed Linked List
+     */
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        Node current = head;
+        while(current != null){
+            sb.append(current).append("-->");
+            current = current.getNext();
+        }
+        if(sb.length() >=3){
+            sb.delete(sb.length() - 3, sb.length());
+            // to remove --> from last node
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     *
+     * @return length of linked list
+     */
+    public int length() {
+        int length = 0;
+        Node current = head;  // Starts counting from head - first node
+        while(current != null){
+            length ++;
+            current = current.getNext();
+        }
+        return length;
     }
 }

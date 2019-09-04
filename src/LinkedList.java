@@ -16,24 +16,39 @@ class LinkedList<E> {
     private Node<E> head;
 
 
-
     /**
-     * TODO Implement the constructor
+     * Implement the constructor
      * Constructor which takes the starting value for the first node, called the "head".
      * @param startingValue Value to initialize the linked list with.
      */
-    public LinkedList(Integer startingValue) {
-        head = new Node<>((E) startingValue); //casting to Generic to override Integer
+    public LinkedList(E startingValue) {
+        head = new Node<>(startingValue);
     }
 
     /**
-     * TODO Implement this method.
-     * Add the given element, value, to the end of the list.
-     * @param value The value to be added.
+     * Convenience method to return the head node.
+     * @return The first node of the linked list.
      */
-    public void add(E value) {
-
+    public Node<E> getHead() {
+        return head;
     }
+
+     /**
+     * Implement this method.
+     * Add a value to the end of the linked list.
+     * This method should create a new node with the value
+     * and traverse the nodes in the linked list using the "next" property of the nodes starting with the head node.
+     * Once a null next link is encountered add a new node and link it to the current last node (Node.setNext()).
+     * @param value The value to be appended as a node at the end of the linked list.
+     */
+     public void addValue(E value) {
+         Node<E> currentNode = head; //cast to Integer
+         while (currentNode.getNext() != null) {
+             currentNode = currentNode.getNext();
+            }
+         Node<E> newNode = new Node<E>(value);
+         currentNode.setNext(newNode);
+        }
 
     /**
      * TODO Implement this method.

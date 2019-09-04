@@ -1,8 +1,30 @@
+/**
+ * This class creates the LinkedList class that utilizes the Node data
+ * structure that will be tested against. The purpose of this class is
+ * to create a linked list of generic node types that will pass given
+ * acceptance tests.
+ *
+ *
+ * @author rlinse
+ * @VCS https://github.com/linsera1809/class-lab4-linkedlists.git
+ * @date 4SEP2019
+ *
+ */
+
 class LinkedList<E> {
 
     private Node<E> head;
 
-    //TODO Implement the constructor.
+
+
+    /**
+     * TODO Implement the constructor
+     * Constructor which takes the starting value for the first node, called the "head".
+     * @param startingValue Value to initialize the linked list with.
+     */
+    public LinkedList(Integer startingValue) {
+        head = new Node<>((E) startingValue); //casting to Generic to override Integer
+    }
 
     /**
      * TODO Implement this method.
